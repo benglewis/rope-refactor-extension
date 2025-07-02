@@ -1,0 +1,17 @@
+[project]
+name = "rope-refactor-extension"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "rope>=1.13.0",
+]
+
+[project.optional-dependencies]
+type-checking = [
+    "basedpyright>=1.29.5",
+]
+test = [
+    "pytest>=8.4.1",
+]

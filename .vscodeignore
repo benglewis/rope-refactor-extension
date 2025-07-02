@@ -1,0 +1,9 @@
+# exclude dev & test assets
+**/src/**
+**/test/**
+**/*.ts
+**/*.map
+**/python/tests/**
+node_modules/**        # unless you bundle runtime deps
+.vscode/**
+.venv/**

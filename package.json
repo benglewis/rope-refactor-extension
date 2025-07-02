@@ -1,0 +1,67 @@
+{
+  "name": "rope-refactor",
+  "displayName": "Rope Refactor",
+  "publisher": "blewis",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.2"
+  },
+  "categories": [
+    "Refactoring"
+  ],
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ropeRefactor.rename",
+        "title": "Rope: Rename…"
+      },
+      {
+        "command": "ropeRefactor.extractMethod",
+        "title": "Rope: Extract Method…"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "ropeRefactor.rename",
+          "when": "editorLangId == python",
+          "group": "refactor@1"
+        },
+        {
+          "command": "ropeRefactor.extractMethod",
+          "when": "editorLangId == python && editorHasSelection",
+          "group": "refactor@2"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "submenu": "ropeRefactor.submenu",
+          "group": "navigation"
+        }
+      ],
+      "submenus": [
+        {
+          "id": "ropeRefactor.submenu",
+          "label": "Rope Refactor…"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "test": "npm run compile && mocha --timeout 10000 --require ts-node/register test/**/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10",
+    "@types/node": "^20",
+    "@types/vscode": "^1.96.2",
+    "@vscode/test-electron": "^2",
+    "mocha": "^10",
+    "ts-node": "^10",
+    "typescript": "^5"
+  }
+}
